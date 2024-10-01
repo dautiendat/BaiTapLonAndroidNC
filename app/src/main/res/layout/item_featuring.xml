@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/item_Featuring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp">
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="140dp"
+                android:src="@drawable/vpop_artists"
+                android:scaleType="fitXY"
+                />
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="140dp"
+                android:text="@string/title_image_featuring_1"
+                android:textAppearance="@style/hi_username"
+                android:background="@drawable/rounded_textview"
+                android:gravity="center|start"
+                />
+        </androidx.cardview.widget.CardView>
+</FrameLayout>

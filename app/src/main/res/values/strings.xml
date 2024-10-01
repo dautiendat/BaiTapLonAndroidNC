@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">EchoMusic</string>
+
+
+    <string name="good_morning">Chào buổi sáng</string>
+    <string name="good_afternoon">Chào buổi chiều</string>
+    <string name="good_evening">Chào buổi tối</string>
+    <string name="hi_username">\uD83D\uDC4B Hi username,</string>
+
+    <string name="font_family">Inter</string>
+    
+    <string name="bar_foryou">Dành cho bạn</string>
+    <string name="bar_relax">Thư giãn</string>
+    <string name="bar_workout">Thể thao</string>
+    <string name="bar_travel">Du lịch</string>
+    <string name="bar_energize">Năng lượng</string>
+
+    <string name="title_1">Nổi bật hôm nay</string>
+    <string name="title_2">Đã nghe gần đây</string>
+    <string name="title_2.1">Xem thêm</string>
+    <string name="title_3">Nghệ sĩ bạn theo dõi</string>
+    <string name="title_4">Bài hát mới</string>
+    <string name="title_5">Danh sách hàng đầu</string>
+
+    <string name="title_relax_1">Đề xuất cho bạn</string>
+
+    <string name="title_image_featuring_1">V-pop mới</string>
+    <string name="title_image_featuring_2">Top 20 trong tuần</string>
+    <string name="title_image_featuring_3">Anh Trai Say Hi</string>
+    <string name="t_n_ng_nh_p">Tên đăng nhập</string>
+    <string name="ng_nh_p">Đăng nhập</string>
+    <string name="b_n_c_t_i_kho_n">Bạn đã có tài khoản?</string>
+    <string name="nh_p_l_i_m_t_kh_u">Nhập lại mật khẩu</string>
+    <string name="m_t_kh_u">Mật khẩu</string>
+    <string name="email_id">Email id</string>
+
+</resources>
