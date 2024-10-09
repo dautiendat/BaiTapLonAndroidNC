@@ -4,10 +4,11 @@ public class MusicItem {
 
     private int musicImage;
     private String musicName;
-
-    public MusicItem(int musicImage, String musicName) {
+    private String musicArtist;
+    public MusicItem(int musicImage, String musicName,String musicArtist) {
         this.musicImage = musicImage;
         this.musicName = musicName;
+        this.musicArtist=musicArtist;
     }
 
     public int getMusicImage() {
@@ -24,5 +25,13 @@ public class MusicItem {
 
     public void setMusicName(String musicName) {
         this.musicName = musicName;
+    }
+
+    public String getMusicArtist() {
+        return musicArtist;
+    }
+
+    public void setMusicArtist(String musicArtist) {
+        this.musicArtist = musicArtist;
     }
 }

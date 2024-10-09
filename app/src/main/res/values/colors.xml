@@ -16,4 +16,5 @@
     <color name="color_text">#BFFFFFFF</color>
     <color name="color_opacity_50">#80000000</color>
     <color name="color_opacity_80">#CC000000</color>
+    <color name="color_text_artist">#80FFFFFF</color>
 </resources>

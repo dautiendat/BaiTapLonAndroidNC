@@ -28,7 +28,7 @@
             android:background="@drawable/rounded_background_frag_relax">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/imageSong_FragRelax"
+                android:id="@+id/imagePlayList_FragRelax"
                 android:layout_width="106dp"
                 android:layout_height="106dp"
                 app:cardCornerRadius="8dp"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:text="Ten danh sach"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/imageSong_FragRelax"
+                app:layout_constraintLeft_toRightOf="@id/imagePlayList_FragRelax"
                 app:layout_constraintLeft_toLeftOf="@id/tvNumSong"
                 android:textAppearance="@style/good_evening"/>
 
@@ -62,7 +62,7 @@
                 android:text="N bai"
                 android:textAppearance="@style/song"
                 app:layout_constraintTop_toBottomOf="@id/tvNamePlayList_FragRelax"
-                app:layout_constraintLeft_toRightOf="@id/imageSong_FragRelax"
+                app:layout_constraintLeft_toRightOf="@id/imagePlayList_FragRelax"
                 />
 
             <View
@@ -71,29 +71,29 @@
                 android:layout_marginLeft="110dp"
                 android:background="@drawable/play_arrow"
                 app:layout_constraintRight_toRightOf="@id/tvNamePlayList_FragRelax"
-                app:layout_constraintBottom_toBottomOf="@id/imageSong_FragRelax"/>
+                app:layout_constraintBottom_toBottomOf="@id/imagePlayList_FragRelax"/>
 
             <View
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="16dp"
                 android:background="@drawable/favorite"
-                app:layout_constraintLeft_toRightOf="@id/imageSong_FragRelax"
-                app:layout_constraintBottom_toBottomOf="@id/imageSong_FragRelax"
+                app:layout_constraintLeft_toRightOf="@id/imagePlayList_FragRelax"
+                app:layout_constraintBottom_toBottomOf="@id/imagePlayList_FragRelax"
                 />
             <View
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="48dp"
                 android:background="@drawable/more_vert"
-                app:layout_constraintLeft_toRightOf="@id/imageSong_FragRelax"
-                app:layout_constraintBottom_toBottomOf="@id/imageSong_FragRelax"
+                app:layout_constraintLeft_toRightOf="@id/imagePlayList_FragRelax"
+                app:layout_constraintBottom_toBottomOf="@id/imagePlayList_FragRelax"
                 />
             <ListView
                 android:id="@+id/listView_songs_FragRelax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/imageSong_FragRelax"
+                app:layout_constraintTop_toBottomOf="@id/imagePlayList_FragRelax"
                 app:layout_constraintLeft_toLeftOf="parent"
                />
 

@@ -26,6 +26,12 @@
 
     </style>
 
+    <style name="text_song">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+
+    </style>
+
     <style name="text_seemore">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#FFFFFFFF</item>
@@ -33,6 +39,11 @@
         <item name="android:layout_marginRight">24dp</item>
     </style>
 
+    <style name="margin_recy">
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginLeft">24dp</item>
+    </style>
     <style name="title_text">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/color_text</item>
@@ -47,5 +58,11 @@
         <item name="android:layout_marginBottom">8dp</item>
     </style>
 
+    <style name="padding">
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.appmusic.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,17 +14,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmusic.fragments.FragmentForYou;
+import com.example.appmusic.fragments.FragmentLibraries;
+import com.example.appmusic.fragments.FragmentMain;
 import com.example.appmusic.fragments.FragmentRelax;
 import com.example.appmusic.R;
 import com.example.appmusic.adapters.AdapterScrollBarInfor;
+import com.example.appmusic.models.ItemLibraries;
+import com.example.appmusic.models.MusicItem;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterScrollBarInfor.itemListener{
+public class MainActivity extends AppCompatActivity {
+    private BottomNavigationView menuBottom;
 
-    private RecyclerView recyclerView;
-    private AdapterScrollBarInfor adapterScrollBarInfor;
-    private String[] listBarInfor;
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -32,54 +38,51 @@ public class MainActivity extends AppCompatActivity implements AdapterScrollBarI
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        recyclerView=findViewById(R.id.recyScrollBarInfor);
-        initData();
-        adapterScrollBarInfor=new AdapterScrollBarInfor(this,listBarInfor);
-        adapterScrollBarInfor.setItemClickListener(this); //set click cho item recyclerview
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapterScrollBarInfor);
 
-        if (savedInstanceState ==null) {
-            FragmentManager manager = getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            Fragment fg = new FragmentForYou();
-            transaction.add(R.id.fragmentMainActivity, fg);
-            transaction.commit();
-        }
-    }
-
-    private void initData(){
-        String[] strings = {"Dành cho bạn","Thư giãn","Thể thao","Du lịch","Năng lượng"};
-        listBarInfor=new String[strings.length];
-        for (int i = 0; i < listBarInfor.length; i++) {
-            listBarInfor[i]=strings[i];
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        String str = adapterScrollBarInfor.getItem(position);
+        initView();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        Fragment fg;
-        switch (position){
-            case 0:
-                fg = new FragmentForYou();
-                break;
-            case 1:
-                fg=new FragmentRelax();
-                break;
-            default:
-                return;
+        Fragment fg2 = new FragmentMain();
+        transaction.add(R.id.main, fg2);
+        if (savedInstanceState ==null) {
+            Fragment fg = new FragmentForYou();
+            transaction.add(R.id.fragmentMainActivity, fg);
         }
+        transaction.commit();
+        onClickBottomNavigation();
+    }
 
-        if(fg!=null){
-            transaction.replace(R.id.fragmentMainActivity,fg);
-            transaction.addToBackStack(null);
+    private void initView(){
+        menuBottom=findViewById(R.id.bottomBar);
+    }
+
+
+    private void onClickBottomNavigation(){
+
+        menuBottom.setOnItemSelectedListener(menuItem -> {
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            Fragment fg =null;
+            Fragment fg2 =null;
+            switch (menuItem.getItemId()){
+                case R.id.homeIcon:
+                    fg=new FragmentMain();
+                    fg2 = new FragmentForYou();
+                    break;
+                case R.id.libraryIcon:
+                    fg=new FragmentLibraries();
+                    break;
+
+            }
+            if(fg!=null)
+                transaction.replace(R.id.main,fg);
+            if(fg2!=null)
+                transaction.replace(R.id.fragmentMainActivity, fg2);
+            
             transaction.commit();
-        }
+            return true;
+        });
 
     }
 }
