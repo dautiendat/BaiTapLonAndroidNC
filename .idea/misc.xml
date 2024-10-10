@@ -1,4 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/activity_register.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/activity_search.xml" value="0.25" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/fragment_foryou.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/fragment_relax.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/fragment_sign_in.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/item_featuring.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/item_fragment_foryou.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/item_recently_song.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/item_recy_scroll_bar_infor.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/layout/item_top_play_list.xml" value="0.17074275362318841" />
+        <entry key="..\:/BaiTapLonAndroidNC/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
