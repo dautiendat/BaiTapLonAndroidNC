@@ -11,14 +11,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.appmusic.R;
-import com.example.appmusic.adapters.AdapterFragmentForYou;
+import com.example.appmusic.adapters.AdapterContent;
 import com.example.appmusic.models.Frame;
 
 
 public class FragmentForYou extends Fragment {
 
     private ListView listView;
-    private AdapterFragmentForYou adapter;
+    private AdapterContent adapter;
     private Frame[] frames;
 
 
@@ -34,7 +34,7 @@ public class FragmentForYou extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         listView=view.findViewById(R.id.listview_FragForYou);
         initData();
-        adapter=new AdapterFragmentForYou(getActivity(),frames);
+        adapter=new AdapterContent(getActivity(),frames);
         listView.setAdapter(adapter);
     }
 

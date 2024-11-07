@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity"
+    android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
@@ -60,18 +61,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyScrollBarInfor"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutScrollBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/margin">
-            </androidx.recyclerview.widget.RecyclerView>
+                app:tabMode="scrollable"
+                app:tabTextColor="@color/white"
+                app:tabTextAppearance="@style/hi_username"
+                app:tabIndicatorHeight="0dp"
+                app:tabBackground="@drawable/rounded_background"
+                style="@style/margin"/>
 
-            <FrameLayout
-                android:id="@+id/fragmentMainActivity"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerFragmentMain"
                 android:layout_width="match_parent"
-                android:layout_height="900dp">
-            </FrameLayout>
+                android:layout_height="900dp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

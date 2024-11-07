@@ -14,14 +14,14 @@ import com.example.appmusic.R;
 import com.example.appmusic.models.Frame;
 
 
-public class AdapterFragmentForYou extends ArrayAdapter<Frame> {
+public class AdapterContent extends ArrayAdapter<Frame> {
 
     private Context context;
     private Frame[] frameList;
 
 
-    public AdapterFragmentForYou(@NonNull Context context, Frame[] frameList) {
-        super(context, R.layout.item_fragment_foryou,frameList); //cần truyền tất cả tham số của hàm
+    public AdapterContent(@NonNull Context context, Frame[] frameList) {
+        super(context, R.layout.item_fragment_content,frameList); //cần truyền tất cả tham số của hàm
         this.context = context;
         this.frameList = frameList;
     }
@@ -29,7 +29,7 @@ public class AdapterFragmentForYou extends ArrayAdapter<Frame> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_fragment_foryou,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_fragment_content,parent,false);
         TextView nameFrame= view.findViewById(R.id.tvRecently);
         Frame frame = frameList[position];
         nameFrame.setText(frame.getNameFrame());

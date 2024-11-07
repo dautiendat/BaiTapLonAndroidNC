@@ -1,7 +1,9 @@
 package com.example.appmusic.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -10,25 +12,23 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.appmusic.adapters.ViewPagerAdapterScrollBar;
 import com.example.appmusic.fragments.FragmentForYou;
 import com.example.appmusic.fragments.FragmentLibraries;
 import com.example.appmusic.fragments.FragmentMain;
-import com.example.appmusic.fragments.FragmentRelax;
 import com.example.appmusic.R;
-import com.example.appmusic.adapters.AdapterScrollBarInfor;
-import com.example.appmusic.models.ItemLibraries;
-import com.example.appmusic.models.MusicItem;
+import com.example.appmusic.fragments.FragmentSearch;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView menuBottom;
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,47 +40,49 @@ public class MainActivity extends AppCompatActivity {
         });
 
         initView();
-
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        Fragment fg2 = new FragmentMain();
-        transaction.add(R.id.main, fg2);
-        if (savedInstanceState ==null) {
-            Fragment fg = new FragmentForYou();
-            transaction.add(R.id.fragmentMainActivity, fg);
-        }
-        transaction.commit();
+        loadFragments();
         onClickBottomNavigation();
     }
 
     private void initView(){
         menuBottom=findViewById(R.id.bottomBar);
+
     }
 
+    private void loadFragments(){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        Fragment fg;
+        fg = new FragmentMain();
+        transaction.replace(R.id.fragMain,fg);
+        transaction.commit();
+    }
 
     private void onClickBottomNavigation(){
-
         menuBottom.setOnItemSelectedListener(menuItem -> {
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction transaction = manager.beginTransaction();
-            Fragment fg =null;
-            Fragment fg2 =null;
+            Fragment fg;
             switch (menuItem.getItemId()){
                 case R.id.homeIcon:
                     fg=new FragmentMain();
-                    fg2 = new FragmentForYou();
                     break;
                 case R.id.libraryIcon:
                     fg=new FragmentLibraries();
                     break;
-
+                case R.id.searchIcon:
+                    fg=new FragmentSearch();
+                    break;
+                default:
+                    fg=new FragmentMain();
+                    break;
             }
-            if(fg!=null)
-                transaction.replace(R.id.main,fg);
-            if(fg2!=null)
-                transaction.replace(R.id.fragmentMainActivity, fg2);
-            
+            if(fg!=null){
+                transaction.replace(R.id.fragMain,fg);
+                transaction.addToBackStack(null);
+            }
             transaction.commit();
+
             return true;
         });
 

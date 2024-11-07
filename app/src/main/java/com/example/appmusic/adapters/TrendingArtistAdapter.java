@@ -1,5 +1,6 @@
 package com.example.appmusic.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,35 +11,39 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmusic.R;
-import com.example.appmusic.models.Artist;
+import com.example.appmusic.models.ItemSearch;
 
 import java.util.List;
 
 public class TrendingArtistAdapter extends RecyclerView.Adapter<TrendingArtistAdapter.ArtistViewHolder> {
 
-    private List<Artist> artists;
+    private List<ItemSearch> artists;
+    private Context context;
 
-    public TrendingArtistAdapter(List<Artist> artists) {
+    public TrendingArtistAdapter(Context context,List<ItemSearch> artists) {
         this.artists = artists;
+        this.context=context;
     }
 
     @NonNull
     @Override
     public ArtistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_trending_artist, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_trending_artist, parent, false);
         return new ArtistViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ArtistViewHolder holder, int position) {
-        Artist artist = artists.get(position);
+        ItemSearch artist = artists.get(position);
         holder.imageViewArtist.setImageResource(artist.getImageResId());  // Đặt ảnh nghệ sĩ
         holder.textViewArtistName.setText(artist.getName());               // Đặt tên nghệ sĩ
     }
 
     @Override
     public int getItemCount() {
-        return artists.size();
+        if(artists!=null)
+            return artists.size();
+        return 0;
     }
 
     public class ArtistViewHolder extends RecyclerView.ViewHolder {

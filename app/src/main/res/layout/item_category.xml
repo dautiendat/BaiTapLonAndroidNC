@@ -2,26 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="8dp">
 
     <!-- Category Image -->
-    <ImageView
-        android:id="@+id/imageViewCategory"
-        android:layout_width="160dp"
-        android:layout_height="120dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/sample_category"/>
-
-    <!-- Category Name -->
-    <TextView
-        android:id="@+id/textViewCategory"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:layout_marginTop="8dp"/>
+        app:cardCornerRadius="16dp">
+        <ImageView
+            android:id="@+id/imageViewCategory"
+            android:layout_width="160dp"
+            android:layout_height="120dp"
+            android:src="@drawable/vpop_artists"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:id="@+id/textViewCategory"
+            android:layout_width="160dp"
+            android:layout_height="120dp"
+            android:text="@string/title_image_featuring_1"
+            android:textAppearance="@style/hi_username"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:background="@drawable/rounded_textview_for_category"
+            android:gravity="bottom|center"
+            />
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

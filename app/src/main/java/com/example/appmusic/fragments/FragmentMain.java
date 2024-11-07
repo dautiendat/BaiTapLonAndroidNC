@@ -10,17 +10,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.appmusic.R;
-import com.example.appmusic.adapters.AdapterScrollBarInfor;
+import com.example.appmusic.activities.MainActivity;
+import com.example.appmusic.adapters.ViewPagerAdapterScrollBar;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
-public class FragmentMain extends Fragment implements AdapterScrollBarInfor.itemListener{
+public class FragmentMain extends Fragment{
 
-    private AdapterScrollBarInfor adapterScrollBarInfor;
-    private String[] listBarInfor;
-    private RecyclerView recyclerView;
+    private TabLayout tabLayoutScrollBar;
+    private ViewPagerAdapterScrollBar VPAdapterScrollBar;
+    private ViewPager2 viewPagerFragmenMain;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,47 +33,55 @@ public class FragmentMain extends Fragment implements AdapterScrollBarInfor.item
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView=view.findViewById(R.id.recyScrollBarInfor);
-        initData();
-        adapterScrollBarInfor=new AdapterScrollBarInfor(getActivity(),listBarInfor);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity(),
-                RecyclerView.HORIZONTAL,false);
 
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapterScrollBarInfor);
-        adapterScrollBarInfor.setItemClickListener(this);
+        viewPagerFragmenMain= view.findViewById(R.id.viewPagerFragmentMain);
+        tabLayoutScrollBar= view.findViewById(R.id.tabLayoutScrollBar);
+
+        VPAdapterScrollBar = new ViewPagerAdapterScrollBar(getActivity());
+        viewPagerFragmenMain.setAdapter(VPAdapterScrollBar);
+        new TabLayoutMediator(tabLayoutScrollBar, viewPagerFragmenMain, (tab, position) -> {
+            switch (position){
+                case 0:
+                    tab.setText(R.string.bar_foryou);
+                    break;
+                case 1:
+                    tab.setText(R.string.bar_relax);
+                    break;
+                case 2:
+                    tab.setText(R.string.bar_energize);
+                    break;
+                case 3:
+                    tab.setText(R.string.bar_travel);
+                    break;
+                case 4:
+                    tab.setText(R.string.bar_workout);
+                    break;
+                default:
+                    tab.setText(R.string.bar_foryou);
+                    break;
+            }
+        }).attach();
+
+        tabLayoutScrollBar.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.view.setBackgroundResource(R.drawable.rounded_background_solid);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.view.setBackgroundResource(R.drawable.rounded_background);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+        TabLayout.Tab firstTab = tabLayoutScrollBar.getTabAt(0);
+        firstTab.view.setBackgroundResource(R.drawable.rounded_background_solid);
     }
 
 
-    private void initData(){
-        String[] strings = {"Dành cho bạn","Thư giãn","Thể thao","Du lịch","Năng lượng"};
-        listBarInfor=new String[strings.length];
-        for (int i = 0; i < listBarInfor.length; i++) {
-            listBarInfor[i]=strings[i];
-        }
-    }
 
-    @Override
-    public void onItemClick(int position) {
-        FragmentManager manager = getParentFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        Fragment fg;
-        switch (position){
-            case 0:
-                fg = new FragmentForYou();
-                break;
-            case 1:
-                fg=new FragmentRelax();
-                break;
-            default:
-                return;
-        }
-
-        if(fg!=null){
-            transaction.replace(R.id.fragmentMainActivity,fg);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        }
-    }
 
 }

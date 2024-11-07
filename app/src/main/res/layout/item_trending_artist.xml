@@ -6,14 +6,14 @@
     android:padding="8dp">
 
     <!-- Artist Image -->
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageViewArtist"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
         android:src="@drawable/cat"
-        android:background="@drawable/circle_background"/>
+        />
 
     <!-- Artist Name -->
     <TextView
