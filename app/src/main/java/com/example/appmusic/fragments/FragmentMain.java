@@ -39,6 +39,7 @@ public class FragmentMain extends Fragment{
 
         VPAdapterScrollBar = new ViewPagerAdapterScrollBar(getActivity());
         viewPagerFragmenMain.setAdapter(VPAdapterScrollBar);
+
         new TabLayoutMediator(tabLayoutScrollBar, viewPagerFragmenMain, (tab, position) -> {
             switch (position){
                 case 0:
@@ -61,6 +62,7 @@ public class FragmentMain extends Fragment{
                     break;
             }
         }).attach();
+
 
         tabLayoutScrollBar.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

@@ -9,6 +9,7 @@ import com.example.appmusic.fragments.FragmentForYou;
 import com.example.appmusic.fragments.FragmentRelax;
 
 public class ViewPagerAdapterScrollBar extends FragmentStateAdapter {
+    private static final int NUM_OF_FRAGMENT = 5;
     public ViewPagerAdapterScrollBar(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
@@ -28,7 +29,7 @@ public class ViewPagerAdapterScrollBar extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 5;
+        return NUM_OF_FRAGMENT;
     }
 
 }
