@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.example.appmusic.R;
 import com.example.appmusic.models.ItemSearch;
 
@@ -34,13 +36,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         ItemSearch category = categories.get(position);
-        holder.imageViewCategory.setImageResource(category.getImageResId());
+        Glide.with(this.context).load(category.getImageUrl()).into(holder.imageViewCategory);
         holder.textViewCategory.setText(category.getName());
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        if(categories != null)
+            return categories.size();
+        return 0;
     }
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {

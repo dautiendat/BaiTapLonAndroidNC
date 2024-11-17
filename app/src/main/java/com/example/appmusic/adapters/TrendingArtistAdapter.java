@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.appmusic.R;
 import com.example.appmusic.models.ItemSearch;
 
@@ -35,7 +36,7 @@ public class TrendingArtistAdapter extends RecyclerView.Adapter<TrendingArtistAd
     @Override
     public void onBindViewHolder(@NonNull ArtistViewHolder holder, int position) {
         ItemSearch artist = artists.get(position);
-        holder.imageViewArtist.setImageResource(artist.getImageResId());  // Đặt ảnh nghệ sĩ
+        Glide.with(this.context).load(artist.getImageUrl()).into(holder.imageViewArtist);  // Đặt ảnh nghệ sĩ
         holder.textViewArtistName.setText(artist.getName());               // Đặt tên nghệ sĩ
     }
 

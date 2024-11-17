@@ -67,14 +67,14 @@ public class FragmentSearch extends Fragment {
                 R.drawable.vpop_artists,R.drawable.vpop_artists,R.drawable.vpop_artists,
                 R.drawable.vpop_artists,R.drawable.vpop_artists};
 
-        artistList = new ArrayList<>();
-        for (int i = 0; i < strings2.length; i++) {
-            artistList.add(new ItemSearch(strings2[i],imgArtist[i]));
-        }
-
-        categoryList = new ArrayList<>();
-        for (int i = 0; i < strings.length; i++) {
-            categoryList.add(new ItemSearch(strings[i],imgBrowse[i]));
-        }
+//        artistList = new ArrayList<>();
+//        for (int i = 0; i < strings2.length; i++) {
+//            artistList.add(new ItemSearch(strings2[i],imgArtist[i]));
+//        }
+//
+//        categoryList = new ArrayList<>();
+//        for (int i = 0; i < strings.length; i++) {
+//            categoryList.add(new ItemSearch(strings[i],imgBrowse[i]));
+//        }
     }
 }

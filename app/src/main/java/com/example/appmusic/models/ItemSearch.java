@@ -1,22 +1,31 @@
 package com.example.appmusic.models;
+
+
 public class ItemSearch {
-        private String name; // Tên nghệ sĩ
-        private int imageResId; // ID của hình ảnh trong drawable
+    private String name; // Tên nghệ sĩ
+    private String imageUrl; // ID của hình ảnh bai hat
 
-        // Constructor
-        public ItemSearch(String name, int imageResId) {
-            this.name = name;
-            this.imageResId = imageResId;
-        }
+    public ItemSearch() {
+    }
 
-        // Getter cho tên nghệ sĩ
-        public String getName() {
+    public ItemSearch(String name, String imageUrl) {
+        this.name = name;
+        this.imageUrl = imageUrl;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getName() {
             return name;
         }
-
-        // Getter cho hình ảnh nghệ sĩ
-        public int getImageResId() {
-            return imageResId;
-        }
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
 }

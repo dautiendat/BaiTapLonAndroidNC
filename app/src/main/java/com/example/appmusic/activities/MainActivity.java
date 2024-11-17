@@ -1,34 +1,24 @@
 package com.example.appmusic.activities;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
+
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.appmusic.adapters.ActivityMainAdapter;
-import com.example.appmusic.adapters.ViewPagerAdapterScrollBar;
-import com.example.appmusic.fragments.FragmentForYou;
-import com.example.appmusic.fragments.FragmentLibraries;
-import com.example.appmusic.fragments.FragmentMain;
+
 import com.example.appmusic.R;
-import com.example.appmusic.fragments.FragmentSearch;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -79,16 +69,12 @@ public class MainActivity extends AppCompatActivity {
         menuBottom.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.homeIcon:
-                        viewPager2.setCurrentItem(0);
-                        break;
-                    case R.id.searchIcon:
-                        viewPager2.setCurrentItem(1);
-                        break;
-                    case R.id.libraryIcon:
-                        viewPager2.setCurrentItem(2);
-                        break;
+                if(menuItem.getItemId()==R.id.homeIcon){
+                    viewPager2.setCurrentItem(0);
+                }else if(menuItem.getItemId()==R.id.searchIcon){
+                    viewPager2.setCurrentItem(1);
+                }else{
+                    viewPager2.setCurrentItem(2);
                 }
                 return true;
             }
