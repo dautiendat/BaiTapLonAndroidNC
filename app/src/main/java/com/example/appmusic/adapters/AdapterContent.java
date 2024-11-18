@@ -39,14 +39,20 @@ public class AdapterContent extends ArrayAdapter<Frame> {
 
         TextView nameFrame= view.findViewById(R.id.tvRecently);
         RecyclerView listSongs = view.findViewById(R.id.recRecentlySong);
-
         Frame frame = frameList.get(position);
-        nameFrame.setText(frame.getNameFrame());
+
+        if(position % 2 == 0){
+            frameAdapter = new FrameAdapter(context,frame.getListSongs(),position);
+            nameFrame.setText(frame.getNameFrame());
+        }else{
+            frameAdapter = new FrameAdapter(context,frame.getListSongs(),position);
+            nameFrame.setText(frame.getNameFrame());
+        }
 
         LinearLayoutManager linear = new LinearLayoutManager(context
                 ,LinearLayoutManager.HORIZONTAL,false);
 
-        frameAdapter = new FrameAdapter(context,frame.getListSongs());
+
         listSongs.setLayoutManager(linear);
         listSongs.setAdapter(frameAdapter);
 

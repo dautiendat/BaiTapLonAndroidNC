@@ -51,38 +51,9 @@ public class FragmentForYou extends Fragment {
     }
 
     private void initData() {
-//        String[] strings = {"Đã nghe gần đây","Nghệ sĩ bạn theo dõi","Bài hát mới","Danh sách hàng đầu"};
-//        List<ItemSearch> list1 = new ArrayList<>();
-//        list1.add(new ItemSearch("20 25 30",R.drawable.song));
-//        list1.add(new ItemSearch("Một ngày không xa",R.drawable.song));
-//        list1.add(new ItemSearch("Không còn",R.drawable.song));
-//        List<ItemSearch> list2 = new ArrayList<>();
-//        list2.add(new ItemSearch("Hoa nở không màu",R.drawable.song));
-//        list2.add(new ItemSearch("Giá như",R.drawable.song));
-//        list2.add(new ItemSearch("Không còn",R.drawable.song));
-//        List<ItemSearch> list3 = new ArrayList<>();
-//        list3.add(new ItemSearch("Tri kỷ",R.drawable.song));
-//        list3.add(new ItemSearch("Nắng ấm xa dần",R.drawable.song));
-//        list3.add(new ItemSearch("Power",R.drawable.song));
-//        List<ItemSearch> list4 = new ArrayList<>();
-//        list4.add(new ItemSearch("Galaxy",R.drawable.song));
-//        list4.add(new ItemSearch("Mantra",R.drawable.song));
-//        list4.add(new ItemSearch("Money",R.drawable.song));
-//
-//        List<ItemSearch>[] lists = new List[4]; // Khởi tạo mảng chứa 4 danh sách
-//        lists[0] = list1;
-//        lists[1] = list2;
-//        lists[2] = list3;
-//        lists[3] = list4;
-//        frames=new Frame[strings.length];
-//        for (int i = 0; i < strings.length; i++) {
-//            frames[i]=new Frame(strings[i],lists[i]);
-//        }
-
         frameList=new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("FrameList");
-
 
         reference.addChildEventListener(new ChildEventListener() {
             @Override

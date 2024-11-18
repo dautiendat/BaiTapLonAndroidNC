@@ -16,28 +16,45 @@ import com.example.appmusic.models.ItemSearch;
 
 import java.util.List;
 
-public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.FrameViewHolder>{
+public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<ItemSearch> listSong;
     private Context context;
+    private int layoutType;
 
-    public FrameAdapter(Context context,List<ItemSearch> listSong) {
+    public FrameAdapter(Context context,List<ItemSearch> listSong, int layoutType) {
         this.context=context;
         this.listSong = listSong;
+        this.layoutType=layoutType;
     }
+
 
     @NonNull
     @Override
-    public FrameViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.item_recently_song,viewGroup,false);
-        return new FrameViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //nếu là vị trí chẵn
+        if(layoutType % 2 == 0){
+            View view = LayoutInflater.from(context).inflate(R.layout.item_recently_song
+                    ,parent,false);
+            return new FrameViewHolder(view);
+        }
+        // nếu là vị trí lẻ
+        else{
+            View view = LayoutInflater.from(context).inflate(R.layout.item_song_play_list
+                    ,parent,false);
+            return new FrameViewHolder2(view);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FrameViewHolder holder, int i) {
-        ItemSearch itemSong = listSong.get(i);
-        Glide.with(this.context).load(itemSong.getImageUrl()).into(holder.imgSong);
-        holder.tvSong.setText(itemSong.getName());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        ItemSearch itemSearch = listSong.get(position);
+        if(holder instanceof FrameViewHolder){
+            Glide.with(context).load(itemSearch.getImageUrl()).into(((FrameViewHolder) holder).imgSong);
+            ((FrameViewHolder) holder).tvSong.setText(itemSearch.getName());
+        }else{
+            Glide.with(context).load(itemSearch.getImageUrl()).into(((FrameViewHolder2) holder).imgSong);
+            ((FrameViewHolder2) holder).tvSong.setText(itemSearch.getName());
+        }
     }
 
     @Override
@@ -55,6 +72,16 @@ public class FrameAdapter extends RecyclerView.Adapter<FrameAdapter.FrameViewHol
             super(itemView);
             imgSong = itemView.findViewById(R.id.imgSong);
             tvSong = itemView.findViewById(R.id.nameSong);
+        }
+    }
+    public class FrameViewHolder2 extends RecyclerView.ViewHolder {
+        ImageView imgSong;
+        TextView tvSong;
+
+        public FrameViewHolder2(@NonNull View itemView) {
+            super(itemView);
+            imgSong = itemView.findViewById(R.id.imgSongPlayList);
+            tvSong = itemView.findViewById(R.id.nameSongPlayList);
         }
     }
 }
