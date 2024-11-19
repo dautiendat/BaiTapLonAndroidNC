@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:orientation="vertical"
     android:background="@color/black"
     >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <LinearLayout
         android:id="@+id/linearFeaturing"
         android:layout_width="match_parent"
@@ -41,10 +40,12 @@
         </HorizontalScrollView>
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listview_FragForYou"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_FragForYou"
         android:layout_width="match_parent"
-        android:layout_height="1000dp"
+        android:layout_height="wrap_content"
+
         />
-    </LinearLayout>
+
+</LinearLayout>
 </androidx.core.widget.NestedScrollView>

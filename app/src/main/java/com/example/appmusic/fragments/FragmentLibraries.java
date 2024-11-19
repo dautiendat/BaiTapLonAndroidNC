@@ -45,7 +45,7 @@ public class FragmentLibraries extends Fragment {
         listView = view.findViewById(R.id.listView_libraries);
 
         initData();
-        GridLayoutManager manager = new GridLayoutManager(getActivity(),2,RecyclerView.VERTICAL,false);
+        GridLayoutManager manager = new GridLayoutManager(getActivity(),2);
         adapterRecy = new AdapterRecyLibraries(getActivity(),libraries);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapterRecy);

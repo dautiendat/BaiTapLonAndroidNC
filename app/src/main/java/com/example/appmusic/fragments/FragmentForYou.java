@@ -1,22 +1,19 @@
 package com.example.appmusic.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmusic.R;
-import com.example.appmusic.adapters.AdapterContent;
-import com.example.appmusic.adapters.FrameAdapter;
+import com.example.appmusic.adapters.ContentFragForYouAdapter;
 import com.example.appmusic.models.Frame;
-import com.example.appmusic.models.ItemSearch;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,8 +26,9 @@ import java.util.List;
 
 public class FragmentForYou extends Fragment {
 
-    private ListView listView;
-    private AdapterContent adapter;
+    //private ListView listView;
+    private RecyclerView recyclerView;
+    private ContentFragForYouAdapter adapter;
     private List<Frame> frameList;
 
 
@@ -44,10 +42,12 @@ public class FragmentForYou extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        listView=view.findViewById(R.id.listview_FragForYou);
+        recyclerView=view.findViewById(R.id.rc_FragForYou);
         initData();
-        adapter=new AdapterContent(getActivity(),frameList);
-        listView.setAdapter(adapter);
+        adapter=new ContentFragForYouAdapter(frameList,getActivity());
+        LinearLayoutManager linear = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(linear);
+        recyclerView.setAdapter(adapter);
     }
 
     private void initData() {

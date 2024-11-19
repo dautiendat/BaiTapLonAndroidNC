@@ -45,8 +45,7 @@ public class FragmentSearch extends Fragment {
         initData();
         LinearLayoutManager linear = new LinearLayoutManager(getActivity()
                 ,LinearLayoutManager.HORIZONTAL,false);
-        GridLayoutManager grid = new GridLayoutManager(getActivity(),2
-                ,RecyclerView.VERTICAL,false);
+        GridLayoutManager grid = new GridLayoutManager(getActivity(),2);
 
         adapterArtist = new TrendingArtistAdapter(getActivity(),artistList);
         recyclerView1.setLayoutManager(linear);

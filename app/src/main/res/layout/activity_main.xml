@@ -13,11 +13,12 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vg_fragMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottomBar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="30dp" />
+        tools:layout_editor_absoluteX="30dp"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
@@ -27,7 +28,6 @@
         android:background="@color/color_opacity_50"
         app:itemTextColor="@color/color_text"
         app:itemIconTint="@color/color_text"
-        android:layout_gravity=""
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
