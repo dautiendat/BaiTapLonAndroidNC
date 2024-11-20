@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class SignInFragment extends Fragment {
@@ -33,7 +39,6 @@ public class SignInFragment extends Fragment {
     private EditText email , password;
     private Button signInButton;
     private FirebaseAuth mAuth;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -127,7 +132,8 @@ public class SignInFragment extends Fragment {
                                 getActivity().startActivity(intent);
                                 getActivity().finish();
                             }else {
-                                Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"Email hoặc mật khẩu không đúng"
+                                        ,Toast.LENGTH_LONG).show();
                                 signInButton.setEnabled(true);
                                 signInButton.setTextColor(getResources().getColor(R.color.white));
                             }

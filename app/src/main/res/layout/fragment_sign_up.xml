@@ -44,6 +44,7 @@
         android:padding="15dp"
         android:hint="@string/t_n_ng_nh_p"
         android:textColorHint="#d0d1d4"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -58,9 +59,11 @@
         android:hint="@string/email_id"
         android:padding="15dp"
         android:textColorHint="#d0d1d4"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/userName"
         app:layout_constraintStart_toStartOf="@+id/userName"
         app:layout_constraintTop_toBottomOf="@+id/userName" />
+
 
     <EditText
         android:id="@+id/password"
@@ -73,6 +76,7 @@
         android:hint="Mật khẩu (tối thiểu 6 ký tự)"
         android:padding="15dp"
         android:textColorHint="#d0d1d4"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/email"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -88,6 +92,7 @@
         android:hint="@string/nh_p_l_i_m_t_kh_u"
         android:padding="15dp"
         android:textColorHint="#d0d1d4"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/password"
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -137,5 +142,7 @@
         app:layout_constraintEnd_toEndOf="@+id/confirmPassword"
         app:layout_constraintStart_toStartOf="@+id/confirmPassword"
         app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

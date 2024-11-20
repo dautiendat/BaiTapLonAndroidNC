@@ -9,7 +9,7 @@ import java.util.List;
 public class Frame {
     private String nameFrame;
     private List<ItemSearch> listSongs;
-
+    private int typeFrame;
     public Frame() {
 
     }
@@ -33,5 +33,13 @@ public class Frame {
 
     public void setListSongs(List<ItemSearch> listSongs) {
         this.listSongs = listSongs;
+    }
+
+    public int getTypeFrame() {
+        return typeFrame;
+    }
+
+    public void setTypeFrame(int typeFrame) {
+        this.typeFrame = typeFrame;
     }
 }

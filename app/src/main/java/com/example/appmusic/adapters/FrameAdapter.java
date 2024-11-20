@@ -31,13 +31,16 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //nếu là vị trí chẵn
-        if(layoutType % 2 == 0){
+        if(layoutType == 0){
+            View view = LayoutInflater.from(context).inflate(R.layout.item_featuring
+                    ,parent,false);
+            return new FrameViewHolder3(view);
+        }
+        else if(layoutType == 1){
             View view = LayoutInflater.from(context).inflate(R.layout.item_recently_song
                     ,parent,false);
             return new FrameViewHolder(view);
         }
-        // nếu là vị trí lẻ
         else{
             View view = LayoutInflater.from(context).inflate(R.layout.item_song_play_list
                     ,parent,false);
@@ -48,7 +51,11 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ItemSearch itemSearch = listSong.get(position);
-        if(holder instanceof FrameViewHolder){
+        if(holder instanceof  FrameViewHolder3){
+            Glide.with(context).load(itemSearch.getImageUrl()).into(((FrameViewHolder3) holder).imgSong);
+            ((FrameViewHolder3) holder).tvSong.setText(itemSearch.getName());
+        }
+        else if(holder instanceof FrameViewHolder){
             Glide.with(context).load(itemSearch.getImageUrl()).into(((FrameViewHolder) holder).imgSong);
             ((FrameViewHolder) holder).tvSong.setText(itemSearch.getName());
         }else{
@@ -82,6 +89,16 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             super(itemView);
             imgSong = itemView.findViewById(R.id.imgSongPlayList);
             tvSong = itemView.findViewById(R.id.nameSongPlayList);
+        }
+    }
+    public class FrameViewHolder3 extends RecyclerView.ViewHolder {
+        ImageView imgSong;
+        TextView tvSong;
+
+        public FrameViewHolder3(@NonNull View itemView) {
+            super(itemView);
+            imgSong = itemView.findViewById(R.id.imgFeaturing);
+            tvSong = itemView.findViewById(R.id.tvNameFeaturing);
         }
     }
 }

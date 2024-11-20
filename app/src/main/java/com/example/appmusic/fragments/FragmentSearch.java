@@ -58,13 +58,13 @@ public class FragmentSearch extends Fragment {
 
     }
     private void initData() {
-        String[] strings = {"V-pop","K-pop","us-uk","dance","hip-hop","jazz","indie","tamil"};
-        String[] strings2 = {"Binz","Sơn Tùng M-TP","Ricky Star","Karik","Wowy","HieuThuHai"};
-        int[] imgArtist ={R.drawable.cat,R.drawable.cat,R.drawable.cat,R.drawable.cat,
-                R.drawable.cat,R.drawable.cat};
-        int[] imgBrowse={R.drawable.vpop_artists,R.drawable.vpop_artists,R.drawable.vpop_artists,
-                R.drawable.vpop_artists,R.drawable.vpop_artists,R.drawable.vpop_artists,
-                R.drawable.vpop_artists,R.drawable.vpop_artists};
+//        String[] strings = {"V-pop","K-pop","us-uk","dance","hip-hop","jazz","indie","tamil"};
+//        String[] strings2 = {"Binz","Sơn Tùng M-TP","Ricky Star","Karik","Wowy","HieuThuHai"};
+//        int[] imgArtist ={R.drawable.cat,R.drawable.cat,R.drawable.cat,R.drawable.cat,
+//                R.drawable.cat,R.drawable.cat};
+//        int[] imgBrowse={R.drawable.vpop_artists,R.drawable.vpop_artists,R.drawable.vpop_artists,
+//                R.drawable.vpop_artists,R.drawable.vpop_artists,R.drawable.vpop_artists,
+//                R.drawable.vpop_artists,R.drawable.vpop_artists};
 
 //        artistList = new ArrayList<>();
 //        for (int i = 0; i < strings2.length; i++) {

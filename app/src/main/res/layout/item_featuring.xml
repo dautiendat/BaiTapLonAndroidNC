@@ -11,12 +11,14 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp">
             <ImageView
+                android:id="@+id/imgFeaturing"
                 android:layout_width="280dp"
                 android:layout_height="140dp"
                 android:src="@drawable/vpop_artists"
                 android:scaleType="fitXY"
                 />
             <TextView
+                android:id="@+id/tvNameFeaturing"
                 android:layout_width="280dp"
                 android:layout_height="140dp"
                 android:text="@string/title_image_featuring_1"

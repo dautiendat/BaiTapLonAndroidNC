@@ -21,9 +21,8 @@
     <TextView
         android:id="@+id/nameSongPlayList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="42dp"
         android:text="Tik Tok Music"
-        android:layout_gravity="center"
         android:ellipsize="end"
         android:maxLines="2"
         android:textAppearance="@style/hi_username"
