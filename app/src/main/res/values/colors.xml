@@ -11,7 +11,8 @@
     <color name="editText">#292E48</color>
     <color name="startcolor">#ED8770</color>
     <color name="endcolor">#d9519d</color>
-
+    <color name="green">#4CAF50</color>
+    <color name="red">#C80000</color>
     <color name="rounded_background">#1FFFFFFF</color>
     <color name="color_text">#BFFFFFFF</color>
     <color name="color_opacity_50">#80000000</color>

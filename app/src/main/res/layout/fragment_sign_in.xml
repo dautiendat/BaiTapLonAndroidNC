@@ -7,6 +7,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SignInFragment">
 
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:hint="Mật khẩu (tối thiểu 6 ký tự)"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:textColorHint="#d0d1d4"
+        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -31,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -39,27 +54,12 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:padding="15dp"
         android:hint="Email id"
+        android:padding="15dp"
         android:textColorHint="#d0d1d4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/edittext_background"
-        android:ems="10"
-        android:hint="Mật khẩu"
-        android:padding="15dp"
-        android:textColorHint="#d0d1d4"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -95,27 +95,28 @@
         android:id="@+id/reset_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="Quên mật khẩu ?"
         android:textColor="#d9519d"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signInButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Đăng nhập"
-        android:textAllCaps="false"
-        android:textSize="19sp"
         android:background="@drawable/gradient_background"
+        android:text="Đăng nhập"
+        android:enabled="false"
+        android:textAllCaps="false"
         android:textColor="#ffffff"
+        android:textSize="19sp"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
