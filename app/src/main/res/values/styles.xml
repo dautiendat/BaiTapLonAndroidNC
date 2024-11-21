@@ -70,5 +70,10 @@
         <item name="android:paddingBottom">8dp</item>
     </style>
 
+    <style name="duration_song">
+        <item name="android:textColor">@color/color_text_artist</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 
 </resources>

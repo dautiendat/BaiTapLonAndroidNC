@@ -1,6 +1,8 @@
 package com.example.appmusic.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appmusic.IMyOnClickListener;
 import com.example.appmusic.R;
+import com.example.appmusic.activities.PlaySongActivity;
 import com.example.appmusic.models.Frame;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.List;
 
-public class ContentFragForYouAdapter extends RecyclerView.Adapter<ContentFragForYouAdapter.ContentViewHolder>{
+public class ContentFragForYouAdapter
+        extends RecyclerView.Adapter<ContentFragForYouAdapter.ContentViewHolder>
+        implements IMyOnClickListener {
     private List<Frame> frameList;
     private Context context;
     private FrameAdapter frameAdapter;
@@ -38,6 +46,8 @@ public class ContentFragForYouAdapter extends RecyclerView.Adapter<ContentFragFo
 
         frameAdapter = new FrameAdapter(context,frame.getListSongs(),frame.getTypeFrame());
             holder.nameFrame.setText(frame.getNameFrame());
+        //khởi tạo biến tham chiếu tới interface
+        frameAdapter.setMyOnClick(this);
         LinearLayoutManager linear = new LinearLayoutManager(context
                 ,LinearLayoutManager.HORIZONTAL,false);
 
@@ -50,6 +60,22 @@ public class ContentFragForYouAdapter extends RecyclerView.Adapter<ContentFragFo
         if(frameList!=null)
             return frameList.size();
         return 0;
+    }
+    //xử lý khi có sự kiện click vào item bài hát -> chuyển sang activity phát nhạc
+    @Override
+    public void myOnClick(View view, int position) {
+        Intent intent = new Intent(context, PlaySongActivity.class);
+
+        view.setDrawingCacheEnabled(true);
+        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+        view.setDrawingCacheEnabled(false);
+
+        // Chuyển Bitmap thành byte array trước khi gửi
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        intent.putExtra("image", byteArray);
+        context.startActivity(intent);
     }
 
     public class ContentViewHolder extends RecyclerView.ViewHolder{

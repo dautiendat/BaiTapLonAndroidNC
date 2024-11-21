@@ -1,6 +1,7 @@
 package com.example.appmusic.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.appmusic.IMyOnClickListener;
 import com.example.appmusic.R;
+import com.example.appmusic.activities.PlaySongActivity;
 import com.example.appmusic.models.ItemSearch;
 
 import java.util.List;
@@ -20,13 +23,16 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<ItemSearch> listSong;
     private Context context;
     private int layoutType;
-
+    private IMyOnClickListener myOnClick;
     public FrameAdapter(Context context,List<ItemSearch> listSong, int layoutType) {
         this.context=context;
         this.listSong = listSong;
         this.layoutType=layoutType;
     }
 
+    public void setMyOnClick(IMyOnClickListener myOnClick) {
+        this.myOnClick = myOnClick;
+    }
 
     @NonNull
     @Override
@@ -71,7 +77,8 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         return 0;
     }
 
-    public class FrameViewHolder extends RecyclerView.ViewHolder {
+    // viewholder cho item bài hát
+    public class FrameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imgSong;
         TextView tvSong;
 
@@ -79,8 +86,16 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             super(itemView);
             imgSong = itemView.findViewById(R.id.imgSong);
             tvSong = itemView.findViewById(R.id.nameSong);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if(myOnClick!=null)
+                myOnClick.myOnClick(view,getAdapterPosition());
         }
     }
+    // viewholder cho item nghệ sĩ, danh sách bài hát,.....
     public class FrameViewHolder2 extends RecyclerView.ViewHolder {
         ImageView imgSong;
         TextView tvSong;
@@ -91,6 +106,7 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             tvSong = itemView.findViewById(R.id.nameSongPlayList);
         }
     }
+    // viewholder cho item tiêu biểu hôm nay
     public class FrameViewHolder3 extends RecyclerView.ViewHolder {
         ImageView imgSong;
         TextView tvSong;
@@ -101,4 +117,5 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             tvSong = itemView.findViewById(R.id.tvNameFeaturing);
         }
     }
+
 }
