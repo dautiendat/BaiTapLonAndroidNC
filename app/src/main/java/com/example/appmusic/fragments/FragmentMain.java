@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -97,20 +98,24 @@ public class FragmentMain extends Fragment{
     private void setHelloUserName(){
         mAuth=FirebaseAuth.getInstance();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
+        //lấy người dùng hiện tại
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser!=null){
+            //lấy id
             String userID = currentUser.getUid();
+            //tìm trong collection có document chứa userID
             database.collection("user").document(userID)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            //nếu tìm thấy
                             if(task.isSuccessful()){
-                                //if(task.getResult().exists())
                                 String userName = task.getResult().getString("userName");
-                                hiUser.setText(getString(R.string.hi_username)+userName+",");
+                                hiUser.setText(getString(R.string.hi_username)+" "+userName+",");
                             }else{
-
+                                Toast.makeText(getContext(),task.getException().toString()
+                                        ,Toast.LENGTH_LONG).show();
                             }
                         }
                     });

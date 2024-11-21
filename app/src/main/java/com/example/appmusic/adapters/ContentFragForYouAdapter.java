@@ -36,20 +36,10 @@ public class ContentFragForYouAdapter extends RecyclerView.Adapter<ContentFragFo
     public void onBindViewHolder(@NonNull ContentViewHolder holder, int position) {
         Frame frame = frameList.get(position);
 
-        if(frame.getTypeFrame() == 1){
-            frameAdapter = new FrameAdapter(context,frame.getListSongs(),frame.getTypeFrame());
+        frameAdapter = new FrameAdapter(context,frame.getListSongs(),frame.getTypeFrame());
             holder.nameFrame.setText(frame.getNameFrame());
-        }else if(frame.getTypeFrame() == 2){
-            frameAdapter = new FrameAdapter(context,frame.getListSongs(),frame.getTypeFrame());
-            holder.nameFrame.setText(frame.getNameFrame());
-        }else{
-            frameAdapter = new FrameAdapter(context,frame.getListSongs(),frame.getTypeFrame());
-            holder.nameFrame.setText(frame.getNameFrame());
-        }
-
         LinearLayoutManager linear = new LinearLayoutManager(context
                 ,LinearLayoutManager.HORIZONTAL,false);
-
 
         holder.listSongs.setLayoutManager(linear);
         holder.listSongs.setAdapter(frameAdapter);

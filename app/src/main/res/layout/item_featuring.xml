@@ -4,7 +4,7 @@
         android:id="@+id/item_Featuring"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp">
+        android:paddingRight="16dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
