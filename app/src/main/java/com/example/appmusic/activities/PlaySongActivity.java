@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -16,6 +17,7 @@ import com.example.appmusic.R;
 
 public class PlaySongActivity extends AppCompatActivity {
     private ImageView imgSong;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +36,10 @@ public class PlaySongActivity extends AppCompatActivity {
             // Hiển thị Bitmap lên ImageView
             imgSong.setImageBitmap(bitmap);
         }
+        progressBar.setProgress(50);
     }
     private void initViews(){
         imgSong = findViewById(R.id.imgSong_ActiPlaySong);
+        progressBar=findViewById(R.id.seekBarSong);
     }
 }
