@@ -11,7 +11,7 @@
     android:paddingLeft="24dp"
     tools:context=".activities.PlaySongActivity">
     <androidx.cardview.widget.CardView
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="360dp"
         app:cardCornerRadius="20dp"
         >
@@ -74,13 +74,15 @@
         android:id="@+id/seekBarSong"
         android:layout_width="match_parent"
         android:layout_height="5dp"
+        android:max="50"
         android:layout_marginTop="20dp"
         android:progressDrawable="@drawable/progress_bar"
         android:thumb="@drawable/thumb_seek_bar"
         />
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <TextView
             android:id="@+id/duration_song"
             android:layout_width="36dp"
@@ -88,8 +90,8 @@
             android:text="2:14"
             android:layout_marginTop="8dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            android:layout_weight="1"
+            />
         <TextView
             android:id="@+id/totalDuration_song"
             android:layout_width="36dp"
@@ -97,13 +99,13 @@
             android:layout_marginTop="8dp"
             android:textAppearance="@style/duration_song"
             android:text="4:30"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:gravity="end"
+            />
+    </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp">
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/RandomSong_icon"
@@ -174,7 +176,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_opacity_25"
+            android:textColor="@color/color_text_artist"
             android:textSize="20sp"
             android:text="Tiếp theo"
             app:layout_constraintTop_toTopOf="parent"

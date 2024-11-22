@@ -91,8 +91,11 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         @Override
         public void onClick(View view) {
-            if(myOnClick!=null)
-                myOnClick.myOnClick(view,getAdapterPosition());
+            if(myOnClick!=null){
+                ItemSearch itemSearch = listSong.get(getAdapterPosition());
+                myOnClick.myOnClick(view, itemSearch.getImageUrl());
+            }
+
         }
     }
     // viewholder cho item nghệ sĩ, danh sách bài hát,.....

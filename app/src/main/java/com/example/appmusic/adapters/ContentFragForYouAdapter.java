@@ -16,6 +16,7 @@ import com.example.appmusic.IMyOnClickListener;
 import com.example.appmusic.R;
 import com.example.appmusic.activities.PlaySongActivity;
 import com.example.appmusic.models.Frame;
+import com.example.appmusic.models.ItemSearch;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
@@ -63,18 +64,9 @@ public class ContentFragForYouAdapter
     }
     //xử lý khi có sự kiện click vào item bài hát -> chuyển sang activity phát nhạc
     @Override
-    public void myOnClick(View view, int position) {
+    public void myOnClick(View view, String imageUrl) {
         Intent intent = new Intent(context, PlaySongActivity.class);
-
-        view.setDrawingCacheEnabled(true);
-        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
-        view.setDrawingCacheEnabled(false);
-
-        // Chuyển Bitmap thành byte array trước khi gửi
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        intent.putExtra("image", byteArray);
+        intent.putExtra("imageUrl",imageUrl);
         context.startActivity(intent);
     }
 

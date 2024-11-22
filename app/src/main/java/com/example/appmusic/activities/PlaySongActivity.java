@@ -1,11 +1,11 @@
 package com.example.appmusic.activities;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -17,6 +17,7 @@ import com.example.appmusic.R;
 
 public class PlaySongActivity extends AppCompatActivity {
     private ImageView imgSong;
+    private TextView textView;
     private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,18 +29,18 @@ public class PlaySongActivity extends AppCompatActivity {
             return insets;
         });
         initViews();
-        byte[] byteArray = getIntent().getByteArrayExtra("image");
 
-        if (byteArray != null) {
-            // Chuyển mảng byte thành Bitmap
-            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            // Hiển thị Bitmap lên ImageView
-            imgSong.setImageBitmap(bitmap);
-        }
-        progressBar.setProgress(50);
+        String imageUrl = getIntent().getStringExtra("imageUrl");
+        Glide.with(this).load(imageUrl).into(imgSong);
+//        int pos = getIntent().getIntExtra("int",-1);
+//        if(pos < 0)
+//            Toast.makeText(this,"nothing",Toast.LENGTH_LONG).show();
+//        else
+//            textView.setText(pos+"");
     }
     private void initViews(){
         imgSong = findViewById(R.id.imgSong_ActiPlaySong);
         progressBar=findViewById(R.id.seekBarSong);
+        textView=findViewById(R.id.tvNameSong_ActiPlaySong);
     }
 }
