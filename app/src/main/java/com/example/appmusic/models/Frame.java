@@ -1,20 +1,16 @@
 package com.example.appmusic.models;
 
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firebase.database.PropertyName;
-
 import java.util.List;
 
 public class Frame {
     private String nameFrame;
-    private List<ItemSearch> listSongs;
+    private List<Song> listSongs;
     private int typeFrame;
     public Frame() {
 
     }
 
-    public Frame(String nameFrame, List<ItemSearch> listSongs) {
+    public Frame(String nameFrame, List<Song> listSongs) {
         this.nameFrame = nameFrame;
         this.listSongs = listSongs;
     }
@@ -27,11 +23,11 @@ public class Frame {
         this.nameFrame = nameFrame;
     }
 
-    public List<ItemSearch> getListSongs() {
+    public List<Song> getListSongs() {
         return listSongs;
     }
 
-    public void setListSongs(List<ItemSearch> listSongs) {
+    public void setListSongs(List<Song> listSongs) {
         this.listSongs = listSongs;
     }
 

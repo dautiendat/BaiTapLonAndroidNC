@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,9 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appmusic.R;
 import com.example.appmusic.adapters.CategoryAdapter;
 import com.example.appmusic.adapters.TrendingArtistAdapter;
-import com.example.appmusic.models.ItemSearch;
+import com.example.appmusic.models.Song;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentSearch extends Fragment {
@@ -26,8 +24,8 @@ public class FragmentSearch extends Fragment {
     private TrendingArtistAdapter adapterArtist;
     private CategoryAdapter adapterCategory;
 
-    private List<ItemSearch> artistList;
-    private List<ItemSearch> categoryList;
+    private List<Song> artistList;
+    private List<Song> categoryList;
 
     @Nullable
     @Override

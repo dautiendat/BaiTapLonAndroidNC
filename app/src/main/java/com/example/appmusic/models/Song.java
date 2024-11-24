@@ -1,16 +1,11 @@
 package com.example.appmusic.models;
 
 
-public class ItemSearch {
+public class Song {
     private String name; // Tên nghệ sĩ
     private String imageUrl; // ID của hình ảnh bai hat
-
-    public ItemSearch() {
-    }
-
-    public ItemSearch(String name, String imageUrl) {
-        this.name = name;
-        this.imageUrl = imageUrl;
+    private String songFileUrl;
+    public Song() {
     }
 
     public void setName(String name) {
@@ -28,4 +23,11 @@ public class ItemSearch {
         return imageUrl;
     }
 
+    public String getSongFileUrl() {
+        return songFileUrl;
+    }
+
+    public void setSongFileUrl(String songFileUrl) {
+        this.songFileUrl = songFileUrl;
+    }
 }
