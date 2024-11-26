@@ -1,7 +1,9 @@
 package com.example.appmusic.models;
 
 
-public class ItemSearch {
+import java.io.Serializable;
+
+public class ItemSearch implements Serializable {
     private String name; // Tên nghệ sĩ
     private String imageUrl; // ID của hình ảnh bai hat
 

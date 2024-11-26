@@ -21,7 +21,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!-- FrameLayout để chứa ResultSeachFragment -->
+    <FrameLayout
+        android:id="@+id/result_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
     <!--ScrollView để cuộn-->
     <ScrollView
         android:layout_width="match_parent"
@@ -56,7 +64,7 @@
         android:id="@+id/tvBrowse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trình duyệt"
+        android:text="Khám phá các thể loại của bạn"
         style="@style/title_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recyclerViewTrendingArtists"
@@ -71,6 +79,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         />
+
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

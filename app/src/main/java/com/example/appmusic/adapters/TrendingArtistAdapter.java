@@ -36,8 +36,13 @@ public class TrendingArtistAdapter extends RecyclerView.Adapter<TrendingArtistAd
     @Override
     public void onBindViewHolder(@NonNull ArtistViewHolder holder, int position) {
         ItemSearch artist = artists.get(position);
-        Glide.with(this.context).load(artist.getImageUrl()).into(holder.imageViewArtist);  // Đặt ảnh nghệ sĩ
-        holder.textViewArtistName.setText(artist.getName());               // Đặt tên nghệ sĩ
+        holder.textViewArtistName.setText(artist.getName());
+
+        // Sử dụng Glide để tải hình ảnh từ URL
+        Glide.with(context)
+                .load(artist.getImageUrl())
+                .placeholder(R.drawable.song) // Hình ảnh mặc định
+                .into(holder.imageViewArtist);
     }
 
     @Override
@@ -47,7 +52,7 @@ public class TrendingArtistAdapter extends RecyclerView.Adapter<TrendingArtistAd
         return 0;
     }
 
-    public class ArtistViewHolder extends RecyclerView.ViewHolder {
+    public static class ArtistViewHolder extends RecyclerView.ViewHolder {
         ImageView imageViewArtist;
         TextView textViewArtistName;
 

@@ -47,7 +47,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return 0;
     }
 
-    public class CategoryViewHolder extends RecyclerView.ViewHolder {
+    public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         ImageView imageViewCategory;
         TextView textViewCategory;
 

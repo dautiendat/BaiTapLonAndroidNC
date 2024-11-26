@@ -15,6 +15,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/primary</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="SplashTheme" parent="Theme.MaterialComponents.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -26,6 +27,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/primary</item>
 
         <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="ThemeOverlay.AppMusic.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
     </style>
 
 </resources>
