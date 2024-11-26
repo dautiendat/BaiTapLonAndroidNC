@@ -10,14 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmusic.R;
 import com.example.appmusic.adapters.AdapterListViewLibraries;
 import com.example.appmusic.adapters.AdapterRecyLibraries;
 import com.example.appmusic.models.ItemLibraries;
-import com.example.appmusic.models.MusicItem;
+import com.example.appmusic.models.Music;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class FragmentLibraries extends Fragment {
     private ListView listView;
     private AdapterRecyLibraries adapterRecy;
     private  AdapterListViewLibraries adapterListView;
-    private List<MusicItem> musicItemList;
+    private List<Music> musicList;
     private List<ItemLibraries> libraries;
 
 
@@ -50,18 +49,18 @@ public class FragmentLibraries extends Fragment {
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapterRecy);
 
-        adapterListView = new AdapterListViewLibraries(getActivity(),musicItemList);
-        listView.setAdapter(adapterListView);
+//        adapterListView = new AdapterListViewLibraries(getActivity(), musicList);
+//        listView.setAdapter(adapterListView);
     }
 
     private void initData() {
-        String[] strings = {"Đã nghe gần đây","Nghệ sĩ bạn theo dõi","Bài hát mới","Danh sách hàng đầu"};
-        int[] imgs={R.drawable.song,R.drawable.song,R.drawable.song,R.drawable.song};
-        String[] strings2 = {"Bảo Anh","Bích Phương","Karik ft.OnlyC","Phan Mạnh Quỳnh"};
-        musicItemList=new ArrayList<>();
-        for (int i = 0; i < strings.length; i++) {
-            musicItemList.add(new MusicItem(imgs[i],strings[i],strings2[i]));
-        }
+//        String[] strings = {"Đã nghe gần đây","Nghệ sĩ bạn theo dõi","Bài hát mới","Danh sách hàng đầu"};
+//        int[] imgs={R.drawable.song,R.drawable.song,R.drawable.song,R.drawable.song};
+//        String[] strings2 = {"Bảo Anh","Bích Phương","Karik ft.OnlyC","Phan Mạnh Quỳnh"};
+//        musicList =new ArrayList<>();
+//        for (int i = 0; i < strings.length; i++) {
+//            musicList.add(new Music(imgs[i],strings[i],strings2[i]));
+//        }
 
         String[] stringNameItem = {"Đã thích","Download", "Danh sách","Nghệ sĩ"};
         int[] icons={R.drawable.favorite_icon,R.drawable.download_for_offline,

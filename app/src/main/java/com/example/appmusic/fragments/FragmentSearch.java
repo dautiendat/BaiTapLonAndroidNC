@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -36,6 +36,8 @@ public class FragmentSearch extends Fragment {
     private List<Song> artistList;
     private List<Song> categoryList;
     private List<Song> allSongs; // Danh sách bài hát toàn bộ
+
+
 
     @Nullable
     @Override
@@ -109,8 +111,9 @@ public class FragmentSearch extends Fragment {
                 for (DataSnapshot songSnapshot : snapshot.getChildren()) {
                     String name = songSnapshot.child("name").getValue(String.class);
                     String imageUrl = songSnapshot.child("imageUrl").getValue(String.class);
+                    String songFileUrl = songSnapshot.child("songFileUrl").getValue(String.class);
                     if (name != null && imageUrl != null) { // Kiểm tra null
-                        allSongs.add(new Song(name, imageUrl));
+                        allSongs.add(new Song(name, imageUrl,songFileUrl));
                     }
                 }
             }

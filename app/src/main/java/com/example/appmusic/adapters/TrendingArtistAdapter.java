@@ -43,6 +43,9 @@ public class TrendingArtistAdapter extends RecyclerView.Adapter<TrendingArtistAd
                 .load(artist.getImageUrl())
                 .placeholder(R.drawable.song) // Hình ảnh mặc định
                 .into(holder.imageViewArtist);
+        Glide.with(this.context).load(artist.getImageUrl()).into(holder.imageViewArtist);  // Đặt ảnh nghệ sĩ
+        holder.textViewArtistName.setText(artist.getName());               // Đặt tên nghệ sĩ
+
     }
 
     @Override

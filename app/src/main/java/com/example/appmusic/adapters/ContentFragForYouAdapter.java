@@ -66,6 +66,13 @@ public class ContentFragForYouAdapter
         context.startActivity(intent);
     }
 
+    @Override
+    public void mySongFile(View view, String songUrl) {
+        Intent intent = new Intent(context, PlaySongActivity.class);
+        intent.putExtra("songUrl",songUrl);
+        context.startActivity(intent);
+    }
+
     public class ContentViewHolder extends RecyclerView.ViewHolder{
         TextView nameFrame;
         RecyclerView listSongs;

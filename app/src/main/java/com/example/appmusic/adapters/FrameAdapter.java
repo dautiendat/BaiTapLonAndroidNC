@@ -92,6 +92,9 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             if(myOnClick!=null){
                 Song song = listSong.get(getAdapterPosition());
                 myOnClick.myOnClick(view, song.getImageUrl());
+
+                myOnClick.mySongFile(view,song.getSongFileUrl());
+
             }
 
         }

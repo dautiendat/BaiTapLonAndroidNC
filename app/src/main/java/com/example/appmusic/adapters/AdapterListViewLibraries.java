@@ -10,22 +10,21 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmusic.R;
-import com.example.appmusic.models.MusicItem;
+import com.example.appmusic.models.Music;
 
 import java.util.List;
 
-public class AdapterListViewLibraries extends ArrayAdapter<MusicItem> {
-    private List<MusicItem> musicItemList;
+public class AdapterListViewLibraries extends ArrayAdapter<Music> {
+    private List<Music> musicList;
     private Context context;
 
 
-    public AdapterListViewLibraries(@NonNull Context context, List<MusicItem> musicItemList) {
-        super(context,R.layout.item_song_libraries ,musicItemList);
+    public AdapterListViewLibraries(@NonNull Context context, List<Music> musicList) {
+        super(context,R.layout.item_song_libraries , musicList);
         this.context=context;
-        this.musicItemList=musicItemList;
+        this.musicList = musicList;
     }
 
     @NonNull
@@ -36,11 +35,11 @@ public class AdapterListViewLibraries extends ArrayAdapter<MusicItem> {
         tv1=view.findViewById(R.id.nameSong_libraries);
         tv2=view.findViewById(R.id.nameArtist_libraries);
         ImageView img= view.findViewById(R.id.imgSong_libraries);
-        MusicItem music = musicItemList.get(position);
+        Music music = musicList.get(position);
 
-        tv1.setText(music.getMusicName());
-        tv2.setText(music.getMusicArtist());
-        img.setImageResource(music.getMusicImage());
+        tv1.setText(music.getName());
+        tv2.setText(music.getArtist());
+        //img.setImageResource(music.getImageUrl());
         return view;
     }
 }
