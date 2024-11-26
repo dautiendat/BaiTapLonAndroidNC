@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.appmusic.R;
 import com.example.appmusic.adapters.ResultSearchSongAdapter;
-import com.example.appmusic.models.ItemSearch;
+import com.example.appmusic.models.Song;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
 public class ResultSeachFragment extends Fragment {
     private RecyclerView recyclerViewSongs;
     private ResultSearchSongAdapter adapter; // Sử dụng ResultSearchSongAdapter để hiển thị danh sách
-    private List<ItemSearch> songList;
+    private List<Song> songList;
 
     @Nullable
     @Override
@@ -42,7 +42,7 @@ public class ResultSeachFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             // Lấy danh sách bài hát từ Bundle (với Serializable)
-            songList = (List<ItemSearch>) bundle.getSerializable("songs");
+            songList = (List<Song>) bundle.getSerializable("songs");
         }
 
         // Kiểm tra nếu danh sách trống, tránh lỗi null

@@ -2,7 +2,6 @@ package com.example.appmusic.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +15,7 @@ import com.example.appmusic.IMyOnClickListener;
 import com.example.appmusic.R;
 import com.example.appmusic.activities.PlaySongActivity;
 import com.example.appmusic.models.Frame;
-import com.example.appmusic.models.ItemSearch;
 
-import java.io.ByteArrayOutputStream;
-import java.io.Serializable;
 import java.util.List;
 
 public class ContentFragForYouAdapter

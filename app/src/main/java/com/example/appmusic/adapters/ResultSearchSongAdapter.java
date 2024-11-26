@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.appmusic.R;
-import com.example.appmusic.models.ItemSearch;
+import com.example.appmusic.models.Song;
 
 import java.util.List;
 
 public class ResultSearchSongAdapter extends RecyclerView.Adapter<ResultSearchSongAdapter.ResultSearchViewHolder> {
 
     private Context context;
-    private List<ItemSearch> songList;
+    private List<Song> songList;
 
-    public ResultSearchSongAdapter(Context context, List<ItemSearch> songList) {
+    public ResultSearchSongAdapter(Context context, List<Song> songList) {
         this.context = context;
         this.songList = songList;
     }
@@ -34,7 +34,7 @@ public class ResultSearchSongAdapter extends RecyclerView.Adapter<ResultSearchSo
 
     @Override
     public void onBindViewHolder(@NonNull ResultSearchSongAdapter.ResultSearchViewHolder holder, int position) {
-        ItemSearch song = songList.get(position);
+        Song song = songList.get(position);
 
         holder.tvName.setText(song.getName());
         Glide.with(context).load(song.getImageUrl()).into(holder.imgThumbnail); // Sử dụng Glide để tải ảnh

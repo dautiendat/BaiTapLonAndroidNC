@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.appmusic.R;
-import com.example.appmusic.models.ItemSearch;
+import com.example.appmusic.models.Song;
 
 import java.util.List;
 
 public class TrendingArtistAdapter extends RecyclerView.Adapter<TrendingArtistAdapter.ArtistViewHolder> {
 
-    private List<ItemSearch> artists;
+    private List<Song> artists;
     private Context context;
 
-    public TrendingArtistAdapter(Context context,List<ItemSearch> artists) {
+    public TrendingArtistAdapter(Context context,List<Song> artists) {
         this.artists = artists;
         this.context=context;
     }
@@ -35,7 +35,7 @@ public class TrendingArtistAdapter extends RecyclerView.Adapter<TrendingArtistAd
 
     @Override
     public void onBindViewHolder(@NonNull ArtistViewHolder holder, int position) {
-        ItemSearch artist = artists.get(position);
+        Song artist = artists.get(position);
         holder.textViewArtistName.setText(artist.getName());
 
         // Sử dụng Glide để tải hình ảnh từ URL

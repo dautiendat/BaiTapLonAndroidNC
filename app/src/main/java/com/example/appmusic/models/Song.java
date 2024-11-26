@@ -3,14 +3,14 @@ package com.example.appmusic.models;
 
 import java.io.Serializable;
 
-public class ItemSearch implements Serializable {
+public class Song implements Serializable {
     private String name; // Tên nghệ sĩ
     private String imageUrl; // ID của hình ảnh bai hat
 
-    public ItemSearch() {
+    public Song() {
     }
 
-    public ItemSearch(String name, String imageUrl) {
+    public Song(String name, String imageUrl) {
         this.name = name;
         this.imageUrl = imageUrl;
     }

@@ -4,23 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmusic.R;
-import com.example.appmusic.activities.MainActivity;
 import com.example.appmusic.adapters.CategoryAdapter;
 import com.example.appmusic.adapters.TrendingArtistAdapter;
-import com.example.appmusic.models.ItemSearch;
+import com.example.appmusic.models.Song;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,9 +33,9 @@ public class FragmentSearch extends Fragment {
     private TrendingArtistAdapter adapterArtist;
     private CategoryAdapter adapterCategory;
     private SearchView searchView;
-    private List<ItemSearch> artistList;
-    private List<ItemSearch> categoryList;
-    private List<ItemSearch> allSongs; // Danh sách bài hát toàn bộ
+    private List<Song> artistList;
+    private List<Song> categoryList;
+    private List<Song> allSongs; // Danh sách bài hát toàn bộ
 
     @Nullable
     @Override
@@ -113,7 +110,7 @@ public class FragmentSearch extends Fragment {
                     String name = songSnapshot.child("name").getValue(String.class);
                     String imageUrl = songSnapshot.child("imageUrl").getValue(String.class);
                     if (name != null && imageUrl != null) { // Kiểm tra null
-                        allSongs.add(new ItemSearch(name, imageUrl));
+                        allSongs.add(new Song(name, imageUrl));
                     }
                 }
             }
@@ -126,9 +123,9 @@ public class FragmentSearch extends Fragment {
     }
 
     private void navigateToResultFragment(String query) {
-        List<ItemSearch> filteredSongs = new ArrayList<>();
+        List<Song> filteredSongs = new ArrayList<>();
 
-        for (ItemSearch song : allSongs) {
+        for (Song song : allSongs) {
             if (song.getName().toLowerCase().contains(query.toLowerCase())) {
                 filteredSongs.add(song);
             }
@@ -165,7 +162,7 @@ public class FragmentSearch extends Fragment {
                     String name = dataSnapshot.child("name").getValue(String.class);
                     String imageUrl = dataSnapshot.child("imageUrl").getValue(String.class);
                     if (name != null && imageUrl != null) {
-                        artistList.add(new ItemSearch(name, imageUrl));
+                        artistList.add(new Song(name, imageUrl));
                     }
                 }
                 adapterArtist.notifyDataSetChanged();
@@ -188,7 +185,7 @@ public class FragmentSearch extends Fragment {
                     String name = dataSnapshot.child("name").getValue(String.class);
                     String imageUrl = dataSnapshot.child("imageUrl").getValue(String.class);
                     if (name != null && imageUrl != null) {
-                        categoryList.add(new ItemSearch(name, imageUrl));
+                        categoryList.add(new Song(name, imageUrl));
                     }
                 }
                 adapterCategory.notifyDataSetChanged();

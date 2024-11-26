@@ -1,7 +1,6 @@
 package com.example.appmusic.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.appmusic.IMyOnClickListener;
 import com.example.appmusic.R;
-import com.example.appmusic.activities.PlaySongActivity;
-import com.example.appmusic.models.ItemSearch;
+import com.example.appmusic.models.Song;
 
 import java.util.List;
 
 public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private List<ItemSearch> listSong;
+    private List<Song> listSong;
     private Context context;
     private int layoutType;
     private IMyOnClickListener myOnClick;
-    public FrameAdapter(Context context,List<ItemSearch> listSong, int layoutType) {
+    public FrameAdapter(Context context, List<Song> listSong, int layoutType) {
         this.context=context;
         this.listSong = listSong;
         this.layoutType=layoutType;
@@ -56,17 +54,17 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ItemSearch itemSearch = listSong.get(position);
+        Song song = listSong.get(position);
         if(holder instanceof  FrameViewHolder3){
-            Glide.with(context).load(itemSearch.getImageUrl()).into(((FrameViewHolder3) holder).imgSong);
-            ((FrameViewHolder3) holder).tvSong.setText(itemSearch.getName());
+            Glide.with(context).load(song.getImageUrl()).into(((FrameViewHolder3) holder).imgSong);
+            ((FrameViewHolder3) holder).tvSong.setText(song.getName());
         }
         else if(holder instanceof FrameViewHolder){
-            Glide.with(context).load(itemSearch.getImageUrl()).into(((FrameViewHolder) holder).imgSong);
-            ((FrameViewHolder) holder).tvSong.setText(itemSearch.getName());
+            Glide.with(context).load(song.getImageUrl()).into(((FrameViewHolder) holder).imgSong);
+            ((FrameViewHolder) holder).tvSong.setText(song.getName());
         }else{
-            Glide.with(context).load(itemSearch.getImageUrl()).into(((FrameViewHolder2) holder).imgSong);
-            ((FrameViewHolder2) holder).tvSong.setText(itemSearch.getName());
+            Glide.with(context).load(song.getImageUrl()).into(((FrameViewHolder2) holder).imgSong);
+            ((FrameViewHolder2) holder).tvSong.setText(song.getName());
         }
     }
 
@@ -92,8 +90,8 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         @Override
         public void onClick(View view) {
             if(myOnClick!=null){
-                ItemSearch itemSearch = listSong.get(getAdapterPosition());
-                myOnClick.myOnClick(view, itemSearch.getImageUrl());
+                Song song = listSong.get(getAdapterPosition());
+                myOnClick.myOnClick(view, song.getImageUrl());
             }
 
         }

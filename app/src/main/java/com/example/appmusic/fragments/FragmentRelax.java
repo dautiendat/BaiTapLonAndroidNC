@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appmusic.R;
 import com.example.appmusic.adapters.ContentFragForYouAdapter;
 import com.example.appmusic.models.Frame;
-import com.example.appmusic.models.ItemSearch;
+import com.example.appmusic.models.Song;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,7 +58,7 @@ public class FragmentRelax extends Fragment {
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                List<ItemSearch> list = snapshot.getValue(Frame.class).getListSongs();
+                List<Song> list = snapshot.getValue(Frame.class).getListSongs();
                 Frame frame = snapshot.getValue(Frame.class);
                 if(frame != null) {
                     frame.setListSongs(list);
