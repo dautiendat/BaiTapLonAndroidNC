@@ -27,7 +27,7 @@
                 android:layout_width="120dp"
                 android:layout_height="140dp"
                 android:text="@string/title_image_featuring_1"
-                android:textColor="@color/white"
+                android:textColor="@color/color_text_artist"
                 android:textSize="30sp"
                 android:maxLines="2"
                 android:gravity="center"

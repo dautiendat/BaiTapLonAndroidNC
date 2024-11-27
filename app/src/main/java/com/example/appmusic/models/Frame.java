@@ -1,16 +1,17 @@
 package com.example.appmusic.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Frame {
     private String nameFrame;
-    private List<Song> listSongs;
+    private ArrayList<Song> listSongs;
     private int typeFrame;
     public Frame() {
 
     }
 
-    public Frame(String nameFrame, List<Song> listSongs) {
+    public Frame(String nameFrame, ArrayList<Song> listSongs) {
         this.nameFrame = nameFrame;
         this.listSongs = listSongs;
     }
@@ -23,11 +24,11 @@ public class Frame {
         this.nameFrame = nameFrame;
     }
 
-    public List<Song> getListSongs() {
+    public ArrayList<Song> getListSongs() {
         return listSongs;
     }
 
-    public void setListSongs(List<Song> listSongs) {
+    public void setListSongs(ArrayList<Song> listSongs) {
         this.listSongs = listSongs;
     }
 

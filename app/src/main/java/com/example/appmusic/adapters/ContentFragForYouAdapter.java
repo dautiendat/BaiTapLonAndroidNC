@@ -2,6 +2,7 @@ package com.example.appmusic.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,9 @@ import com.example.appmusic.IMyOnClickListener;
 import com.example.appmusic.R;
 import com.example.appmusic.activities.PlaySongActivity;
 import com.example.appmusic.models.Frame;
+import com.example.appmusic.models.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContentFragForYouAdapter
@@ -60,16 +63,15 @@ public class ContentFragForYouAdapter
     }
     //xử lý khi có sự kiện click vào item bài hát -> chuyển sang activity phát nhạc
     @Override
-    public void myOnClick(View view, String imageUrl) {
-        Intent intent = new Intent(context, PlaySongActivity.class);
-        intent.putExtra("imageUrl",imageUrl);
-        context.startActivity(intent);
+    public void myOnClick(View view, Song song) {
+
     }
 
     @Override
-    public void mySongFile(View view, String songUrl) {
+    public void myClickToSendArrayList(int position, ArrayList<Song> songList) {
         Intent intent = new Intent(context, PlaySongActivity.class);
-        intent.putExtra("songUrl",songUrl);
+        intent.putExtra("position",position);
+        intent.putExtra("songList",songList);
         context.startActivity(intent);
     }
 

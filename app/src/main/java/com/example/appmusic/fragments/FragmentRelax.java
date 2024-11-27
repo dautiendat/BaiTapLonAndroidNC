@@ -58,7 +58,7 @@ public class FragmentRelax extends Fragment {
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                List<Song> list = snapshot.getValue(Frame.class).getListSongs();
+                ArrayList<Song> list = snapshot.getValue(Frame.class).getListSongs();
                 Frame frame = snapshot.getValue(Frame.class);
                 if(frame != null) {
                     frame.setListSongs(list);

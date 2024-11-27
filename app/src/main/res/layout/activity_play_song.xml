@@ -10,6 +10,7 @@
     android:paddingRight="24dp"
     android:paddingLeft="24dp"
     tools:context=".activities.PlaySongActivity">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="360dp"
@@ -73,11 +74,12 @@
     <SeekBar
         android:id="@+id/seekBarSong"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="wrap_content"
         android:max="50"
         android:layout_marginTop="20dp"
-        android:progressDrawable="@drawable/progress_bar"
-        android:thumb="@drawable/thumb_seek_bar"
+        android:thumbTint="@color/white"
+        android:foregroundTint="@color/white"
+        android:progressBackgroundTint="@color/color_text_artist"
         />
     <LinearLayout
         android:layout_width="match_parent"

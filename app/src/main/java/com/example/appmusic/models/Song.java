@@ -1,10 +1,11 @@
 package com.example.appmusic.models;
+import java.io.Serializable;
 
-
-public class Song {
+public class Song implements Serializable {
     private String name; // Tên nghệ sĩ
     private String imageUrl; // ID của hình ảnh bai hat
     private String songFileUrl;
+
     public Song() {
     }
 
@@ -30,4 +31,5 @@ public class Song {
     public void setSongFileUrl(String songFileUrl) {
         this.songFileUrl = songFileUrl;
     }
+
 }

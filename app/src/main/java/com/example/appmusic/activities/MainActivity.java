@@ -1,17 +1,20 @@
 package com.example.appmusic.activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.appmusic.StorageSong;
 import com.example.appmusic.adapters.ActivityMainAdapter;
 
 import com.example.appmusic.R;
@@ -25,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView menuBottom;
     private ViewPager2 viewPager2;
     private ActivityMainAdapter adapterVG;
-
+    private final String STORAGE = "com.example.appmusic.STORAGESONG";
+    public static boolean show_minimized_player = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         adapterVG = new ActivityMainAdapter(this);
         viewPager2.setAdapter(adapterVG);
         onClickBottomNavigation();
+
+
     }
 
 
@@ -79,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        StorageSong storage = new StorageSong(getApplicationContext());
+        int index = storage.loadSongIndex();
+        if(index!=-1)
+            show_minimized_player = true;
+        else show_minimized_player = false;
     }
 }

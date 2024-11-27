@@ -1,11 +1,12 @@
 package com.example.appmusic.activities;
 
-import android.Manifest;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.os.IBinder;
@@ -13,10 +14,11 @@ import android.os.PersistableBundle;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -25,14 +27,19 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.example.appmusic.MediaPlayerService;
 import com.example.appmusic.R;
+import com.example.appmusic.StorageSong;
+import com.example.appmusic.models.Song;
+
+import java.util.ArrayList;
 
 public class PlaySongActivity extends AppCompatActivity {
-    private static final int REQUEST_CODE = 1;
+    private ArrayList<Song> songArrayList;
     private ImageView imgSong;
-    private TextView textView;
     private ProgressBar progressBar;
+    private TextView tvNameSong;
     private MediaPlayerService player;
     boolean serviceBound = false;
+    public static final String PLAY_NEW_S0NG_ACTION="com.example.appmusic.PLAY_NEW_SONG";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,18 +51,22 @@ public class PlaySongActivity extends AppCompatActivity {
         });
         //ánh xạ
         initViews();
-        //lấy ảnh bài hát
-        String imageUrl = getIntent().getStringExtra("imageUrl");
-        //load ảnh lên imageview
-        Glide.with(this).load(imageUrl).into(imgSong);
-        //lấy file bài hát
-        String songUrl = getIntent().getStringExtra("songUrl");
-        //phát bài hát
-        playAudio(songUrl);
+        //lấy bài hát
+        int songIndex = getIntent().getIntExtra("position",-1);
+        songArrayList = (ArrayList<Song>) getIntent().getSerializableExtra("songList");
+        if(songArrayList!=null){
+            Song song = songArrayList.get(songIndex);
+            Glide.with(this).load(song.getImageUrl()).into(imgSong);
+            tvNameSong.setText(song.getName());
+            //phát bài hát
+            playAudio(songIndex);
+        }
+
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+    public void onSaveInstanceState(@NonNull Bundle outState,
+                                    @NonNull PersistableBundle outPersistentState) {
         outState.putBoolean("ServiceState", serviceBound);
         super.onSaveInstanceState(outState, outPersistentState);
     }
@@ -69,7 +80,7 @@ public class PlaySongActivity extends AppCompatActivity {
     private void initViews(){
         imgSong = findViewById(R.id.imgSong_ActiPlaySong);
         progressBar=findViewById(R.id.seekBarSong);
-        textView=findViewById(R.id.tvNameSong_ActiPlaySong);
+        tvNameSong=findViewById(R.id.tvNameSong_ActiPlaySong);
     }
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -84,14 +95,24 @@ public class PlaySongActivity extends AppCompatActivity {
             serviceBound=false;
         }
     };
-    private void playAudio(String mediaUrl){
+    private void playAudio(int songIndex){
         if(!serviceBound){
+            StorageSong storage = new StorageSong(getApplicationContext());
+            storage.storeSongArrayList(songArrayList);
+            storage.storeSongIndex(songIndex);
+
             Intent intent = new Intent(this, MediaPlayerService.class);
-            intent.putExtra("mediaFile",mediaUrl);
             startService(intent);
             bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+        }else{
+            StorageSong storage = new StorageSong(getApplicationContext());
+            storage.storeSongIndex(songIndex);
+            Intent intent = new Intent(PLAY_NEW_S0NG_ACTION);
+            sendBroadcast(intent);
         }
     }
+
+
 
     @Override
     protected void onDestroy() {
