@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="margin">
         <item name="android:layout_marginLeft">24dp</item>
         <item name="android:layout_marginTop">16dp</item>
@@ -9,6 +10,7 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
     </style>
+
     <style name="good_evening">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/color_text</item>
@@ -49,6 +51,7 @@
         <item name="android:layout_marginRight">24dp</item>
         <item name="android:layout_marginLeft">24dp</item>
     </style>
+
     <style name="title_text">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/color_text</item>
@@ -73,6 +76,11 @@
     <style name="duration_song">
         <item name="android:textColor">@color/color_text_artist</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Widget.Theme.AppMusic.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
 
 

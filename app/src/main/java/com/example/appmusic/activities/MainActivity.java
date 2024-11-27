@@ -3,6 +3,7 @@ package com.example.appmusic.activities;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.appmusic.StorageSong;
@@ -19,6 +22,7 @@ import com.example.appmusic.adapters.ActivityMainAdapter;
 
 import com.example.appmusic.R;
 
+import com.example.appmusic.fragments.ResultSeachFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -50,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 
     private void onClickBottomNavigation(){
         //đăng ký onclick cho icon bottom menu

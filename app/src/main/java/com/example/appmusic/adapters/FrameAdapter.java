@@ -15,15 +15,14 @@ import com.example.appmusic.IMyOnClickListener;
 import com.example.appmusic.R;
 import com.example.appmusic.models.Song;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private ArrayList<Song> listSong;
+    private List<Song> listSong;
     private Context context;
     private int layoutType;
     private IMyOnClickListener myOnClick;
-    public FrameAdapter(Context context, ArrayList<Song> listSong, int layoutType) {
+    public FrameAdapter(Context context, List<Song> listSong, int layoutType) {
         this.context=context;
         this.listSong = listSong;
         this.layoutType=layoutType;
@@ -91,8 +90,9 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         @Override
         public void onClick(View view) {
             if(myOnClick!=null){
-                //Song song = listSong.get(getAdapterPosition());
-                myOnClick.myClickToSendArrayList(getAdapterPosition(),listSong);
+                Song song = listSong.get(getAdapterPosition());
+                myOnClick.myOnClick(view, song.getImageUrl());
+                myOnClick.mySongFile(view,song.getSongFileUrl());
             }
 
         }
