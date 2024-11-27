@@ -1,11 +1,24 @@
 package com.example.appmusic.models;
 
 
-public class Song {
+import java.io.Serializable;
+
+public class Song implements Serializable {
     private String name; // Tên nghệ sĩ
     private String imageUrl; // ID của hình ảnh bai hat
     private String songFileUrl;
     public Song() {
+    }
+
+    public Song(String name, String imageUrl, String songFileUrl) {
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.songFileUrl = songFileUrl;
+    }
+
+    public Song(String name, String imageUrl) {
+        this.name = name;
+        this.imageUrl = imageUrl;
     }
 
     public void setName(String name) {

@@ -92,7 +92,6 @@ public class FrameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         public void onClick(View view) {
             if(myOnClick!=null){
                 myOnClick.myClickToSendArrayList(getAdapterPosition(),listSong);
-
             }
 
         }
