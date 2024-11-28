@@ -11,16 +11,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.appmusic.IMyOnClickListener;
 import com.example.appmusic.R;
 import com.example.appmusic.models.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultSearchSongAdapter extends RecyclerView.Adapter<ResultSearchSongAdapter.ResultSearchViewHolder> {
 
     private Context context;
     private List<Song> songList;
+    private ArrayList<Song> listSong;
+    private IMyOnClickListener myOnClick;
 
+    public ResultSearchSongAdapter(Context context, ArrayList<Song> songList, IMyOnClickListener myOnClick) {
+        this.context = context;
+        this.songList = songList;
+        this.myOnClick = myOnClick;
+    }
     public ResultSearchSongAdapter(Context context, List<Song> songList) {
         this.context = context;
         this.songList = songList;
@@ -38,6 +47,12 @@ public class ResultSearchSongAdapter extends RecyclerView.Adapter<ResultSearchSo
 
         holder.tvName.setText(song.getName());
         Glide.with(context).load(song.getImageUrl()).into(holder.imgThumbnail); // Sử dụng Glide để tải ảnh
+        // Gắn sự kiện click cho itemView
+        holder.itemView.setOnClickListener(v -> {
+            if (myOnClick != null) {
+                myOnClick.myClickToSendArrayList(position, new ArrayList<>(songList)); // Gửi danh sách và vị trí
+            }
+        });
     }
 
     @Override
